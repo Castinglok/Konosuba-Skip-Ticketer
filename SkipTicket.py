@@ -10,6 +10,9 @@ def click(x,y):
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
 
 def lookForReplay():
+
+    counter = 0
+
     #first click to minimize ide
     click(1810,14)
     while keyboard.is_pressed('q') == False:
@@ -25,6 +28,7 @@ def lookForReplay():
                 time.sleep(0.8)
             if(Replay_POS != None):
                 click(Replay_POS[0], Replay_POS[1])
+                counter += 1
                 time.sleep(0.8)
             if(Next_POS != None and Replay_POS == None):
                 click(Next_POS[0], Next_POS[1])
@@ -38,5 +42,6 @@ def lookForReplay():
 
         except:
             continue
+    print("Replays: " + str(counter))
 
 lookForReplay()
